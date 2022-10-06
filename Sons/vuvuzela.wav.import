@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/vuvuzela.wav-6a52a98fa21af667ef984d57f493edd7.sample"
+
+[deps]
+
+source_file="res://Sons/vuvuzela.wav"
+dest_files=[ "res://.import/vuvuzela.wav-6a52a98fa21af667ef984d57f493edd7.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=true
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
