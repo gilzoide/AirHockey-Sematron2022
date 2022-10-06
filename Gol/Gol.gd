@@ -11,6 +11,8 @@ func _on_Disco_body_entered(body: PhysicsBody2D):
 	pontos = pontos + 1
 	$Placar.text = str(pontos)
 	
+	$AudioStreamPlayer.play()
+	
 	var mae_disco = body.get_parent()
 	body.queue_free()
 	var disco = cena_disco.instance()
