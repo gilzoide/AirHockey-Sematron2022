@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Disco/Disco.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Taco/Taco.tscn" type="PackedScene" id=2]
@@ -26,14 +26,50 @@ extents = Vector2( 329.375, 200.281 )
 extents = Vector2( 872, 5 )
 
 [sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 210, 5 )
+extents = Vector2( 210, 21 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 210, 21.5 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 210, 175 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 210, 171 )
 
 [node name="Jogo" type="Node2D"]
 
 [node name="Campo" type="Sprite" parent="."]
-modulate = Color( 0.333333, 0.333333, 0.333333, 1 )
+self_modulate = Color( 0.333333, 0.333333, 0.333333, 1 )
 texture = ExtResource( 3 )
 centered = false
+
+[node name="Canto" type="Sprite" parent="Campo"]
+self_modulate = Color( 0.13, 1, 0, 0.6 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Canto2" type="Sprite" parent="Campo"]
+self_modulate = Color( 0, 0.0392157, 1, 0.6 )
+position = Vector2( 750, 0 )
+texture = ExtResource( 4 )
+centered = false
+flip_h = true
+
+[node name="Canto3" type="Sprite" parent="Campo"]
+self_modulate = Color( 0.85098, 0, 1, 0.6 )
+position = Vector2( 0, 960 )
+texture = ExtResource( 4 )
+centered = false
+flip_v = true
+
+[node name="Canto4" type="Sprite" parent="Campo"]
+self_modulate = Color( 1, 0, 0, 0.6 )
+position = Vector2( 750, 960 )
+texture = ExtResource( 4 )
+centered = false
+flip_h = true
+flip_v = true
 
 [node name="TacoCima" parent="." instance=ExtResource( 2 )]
 modulate = Color( 0, 1, 0.811765, 1 )
@@ -49,32 +85,13 @@ position = Vector2( 536, 1440 )
 
 [node name="Paredes" type="StaticBody2D" parent="."]
 
-[node name="Canto" type="Sprite" parent="Paredes"]
-self_modulate = Color( 0.13, 1, 0, 0.6 )
-texture = ExtResource( 4 )
-centered = false
-
 [node name="Esquerda" type="CollisionShape2D" parent="Paredes"]
 position = Vector2( -160.5, 895 )
 shape = SubResource( 4 )
 
-[node name="Canto2" type="Sprite" parent="Paredes"]
-self_modulate = Color( 0, 0.0392157, 1, 0.6 )
-position = Vector2( 750, 0 )
-texture = ExtResource( 4 )
-centered = false
-flip_h = true
-
 [node name="Direita" type="CollisionShape2D" parent="Paredes"]
 position = Vector2( 1241, 897 )
 shape = SubResource( 5 )
-
-[node name="Canto3" type="Sprite" parent="Paredes"]
-self_modulate = Color( 0.85098, 0, 1, 0.6 )
-position = Vector2( 0, 960 )
-texture = ExtResource( 4 )
-centered = false
-flip_v = true
 
 [node name="Cima" type="CollisionShape2D" parent="Paredes"]
 position = Vector2( 0.5, -188 )
@@ -83,14 +100,6 @@ shape = SubResource( 6 )
 [node name="Cima2" type="CollisionShape2D" parent="Paredes"]
 position = Vector2( 1079.25, -186.25 )
 shape = SubResource( 8 )
-
-[node name="Canto4" type="Sprite" parent="Paredes"]
-self_modulate = Color( 1, 0, 0, 0.6 )
-position = Vector2( 750, 960 )
-texture = ExtResource( 4 )
-centered = false
-flip_h = true
-flip_v = true
 
 [node name="Baixo" type="CollisionShape2D" parent="Paredes"]
 position = Vector2( 0.75, 2109.94 )
@@ -108,12 +117,12 @@ position = Vector2( 539, 960 )
 shape = SubResource( 3 )
 
 [node name="GolBaixo" type="CollisionShape2D" parent="ParedesTaco"]
-position = Vector2( 540, 1915 )
+position = Vector2( 540, 1931 )
 shape = SubResource( 9 )
 
 [node name="GolCima" type="CollisionShape2D" parent="ParedesTaco"]
-position = Vector2( 540, 5 )
-shape = SubResource( 9 )
+position = Vector2( 540, -11.5 )
+shape = SubResource( 10 )
 
 [node name="Gols" type="Node2D" parent="."]
 
@@ -123,8 +132,8 @@ collision_mask = 8
 script = ExtResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape2D" parent="Gols/GolBaixo"]
-position = Vector2( 540, 1965 )
-shape = SubResource( 9 )
+position = Vector2( 540, 2135 )
+shape = SubResource( 11 )
 
 [node name="Placar" type="Label" parent="Gols/GolBaixo"]
 margin_left = 10.0
@@ -146,8 +155,8 @@ collision_mask = 8
 script = ExtResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape2D" parent="Gols/GolCima"]
-position = Vector2( 540, -45 )
-shape = SubResource( 9 )
+position = Vector2( 540, -211 )
+shape = SubResource( 12 )
 
 [node name="Placar" type="Label" parent="Gols/GolCima"]
 margin_left = 10.0

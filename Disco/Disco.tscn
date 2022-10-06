@@ -1,6 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Imagens/Taco+Disco.svg" type="Texture" id=1]
+[ext_resource path="res://Disco/Disco.gd" type="Script" id=2]
+[ext_resource path="res://Sons/disco-parede.wav" type="AudioStream" id=3]
+[ext_resource path="res://Sons/taco-disco.wav" type="AudioStream" id=4]
 
 [sub_resource type="PhysicsMaterial" id=2]
 bounce = 0.7
@@ -13,7 +16,16 @@ collision_layer = 8
 collision_mask = 5
 physics_material_override = SubResource( 2 )
 gravity_scale = 0.0
+continuous_cd = 2
+contacts_reported = 1
+contact_monitor = true
+can_sleep = false
 linear_damp = 0.1
+script = ExtResource( 2 )
+layer_parede = 1
+layer_taco = 4
+audio_parede = ExtResource( 3 )
+audio_taco = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.7, 0.7 )
@@ -21,3 +33,7 @@ texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_colidiu"]
